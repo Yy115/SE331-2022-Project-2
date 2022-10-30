@@ -6,7 +6,6 @@
 <script>
 import CommentForm from '@/components/CommentForm.vue'
 import CommentList from '@/components/CommentList.vue'
-
 export default {
   inject: ['GStore'],
   components: {

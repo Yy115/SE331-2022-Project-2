@@ -34,7 +34,6 @@
 // @ is an alias to /src
 import PatientCard from '@/components/PatientCard.vue'
 import PersonService from '@/services/PatientService.js'
-
 export default {
   name: 'HomeView',
   props: {
@@ -90,7 +89,6 @@ export default {
   flex-direction: column;
   align-items: center;
 }
-
 .pagination {
   display: flex;
   width: 290px;

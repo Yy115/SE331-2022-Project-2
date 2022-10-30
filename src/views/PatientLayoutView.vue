@@ -5,8 +5,7 @@
         Patient Details
       </router-link>
       |
-      <router-link :to="{ name: 'PatientVaccine' }">Vaccination</router-link>
-      |
+      <router-link :to="{ name: 'PatientVaccine' }">Vaccination</router-link>|
       <router-link :to="{ name: 'DoctorComment' }">
         Docrot Comments
       </router-link>

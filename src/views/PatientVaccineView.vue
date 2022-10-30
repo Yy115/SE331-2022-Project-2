@@ -52,7 +52,6 @@ export default {
   line-height: 25px;
   background-color: moccasin;
 }
-
 .dose2 {
   height: 100px;
   width: 300px;
@@ -60,7 +59,6 @@ export default {
   line-height: 25px;
   background-color: antiquewhite;
 }
-
 .dose3 {
   height: 100px;
   width: 300px;
