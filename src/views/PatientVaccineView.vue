@@ -4,35 +4,35 @@
   <center>
     <div class="dose1">
       <b>First dose: </b>
-      <br/>
+      <br />
       <span> vaccine name: {{ patient.Vaccine_name }} </span>
-      <br/>
+      <br />
       <span> time: {{ patient.time_2 }}</span>
-      <br/>
+      <br />
       <span>date: {{ patient.date_2 }}</span>
-      <br/>
+      <br />
     </div>
-    <br/>
+    <br />
     <div class="dose2">
       <b>Second dose: </b>
-      <br/>
+      <br />
       <span> vaccine name:{{ patient.Vaccine_name }} </span>
-      <br/>
+      <br />
       <span> time:{{ patient.time_2 }}</span>
-      <br/>
+      <br />
       <span>date:{{ patient.date_2 }}</span>
-      <br/>
+      <br />
     </div>
-    <br/>
+    <br />
     <div class="dose3">
       <b>third dose: </b>
-      <br/>
+      <br />
       <span> vaccine name:{{ patient.Vaccine_name }} </span>
-      <br/>
+      <br />
       <span> time:{{ patient.time_3 }}</span>
-      <br/>
+      <br />
       <span>date:{{ patient.date_3 }}</span>
-      <br/>
+      <br />
     </div>
   </center>
 </template>
