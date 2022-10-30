@@ -72,7 +72,7 @@ export default {
       })
   },
   beforeRouteUpdate(routeTo, routeFrom, next) {
-    PersonService.getPatients(3, parseInt(routeTo.query.page) || 1)
+    PersonService.getPatients(4, parseInt(routeTo.query.page) || 1)
       .then((response) => {
         this.patients = response.data
         this.totalPatients = response.headers['x-total-count']

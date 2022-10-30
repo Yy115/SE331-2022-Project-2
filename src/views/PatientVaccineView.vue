@@ -1,37 +1,31 @@
 <template>
-  <h1>Vaccination of {{ patient.person_name }}</h1>
-  <h3>{{ patient.state }}</h3>
+  <h1>Vaccination of {{ patient.name }} {{ patient.sur_name }}</h1>
+  <h3>'{{ patient.vaccined_status }}'</h3>
   <center>
     <div class="dose1">
       <b>First dose: </b>
       <br />
-      <span> vaccine name: {{ patient.Vaccine_name }} </span>
+      <span> vaccine name: {{ patient.firstdose_name }} </span>
       <br />
-      <span> time: {{ patient.time_2 }}</span>
-      <br />
-      <span>date: {{ patient.date_2 }}</span>
+      <span> time: {{ patient.firstdose_time }}</span>
       <br />
     </div>
     <br />
-    <div class="dose2">
+    <div class="dose2" v-if="patient.seconddose_name">
       <b>Second dose: </b>
       <br />
-      <span> vaccine name:{{ patient.Vaccine_name }} </span>
+      <span> vaccine name:{{ patient.seconddose_name }} </span>
       <br />
-      <span> time:{{ patient.time_2 }}</span>
-      <br />
-      <span>date:{{ patient.date_2 }}</span>
+      <span> time:{{ patient.seconddose_time }}</span>
       <br />
     </div>
     <br />
-    <div class="dose3">
+    <div class="dose3" v-if="patient.thirddose_name">
       <b>third dose: </b>
       <br />
-      <span> vaccine name:{{ patient.Vaccine_name }} </span>
+      <span> vaccine name:{{ patient.thirddose_name }} </span>
       <br />
-      <span> time:{{ patient.time_3 }}</span>
-      <br />
-      <span>date:{{ patient.date_3 }}</span>
+      <span> time:{{ patient.thirddose_time }}</span>
       <br />
     </div>
   </center>
