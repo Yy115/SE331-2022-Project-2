@@ -8,7 +8,7 @@
             <div class="index-list"></div>
             <div>{{ comment.comment }}</div>
           </div>
-          <br />
+          <br/>
         </li>
       </ul>
     </center>
