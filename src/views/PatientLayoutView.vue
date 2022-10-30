@@ -5,12 +5,13 @@
         Patient Details
       </router-link>
       |
-      <router-link :to="{ name: 'PatientVaccine' }">Vaccination</router-link>|
+      <router-link :to="{ name: 'PatientVaccine' }">Vaccination</router-link>
+      |
       <router-link :to="{ name: 'DoctorComment' }">
         Docrot Comments
       </router-link>
     </div>
-    <router-view :patient="GStore.patient" />
+    <router-view :patient="GStore.patient"/>
   </div>
 </template>
 <script>
