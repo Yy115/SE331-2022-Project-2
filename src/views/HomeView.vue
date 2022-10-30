@@ -3,26 +3,26 @@
   <h3>Data from one plus one group</h3>
   <div class="patients">
     <PatientCard
-        v-for="patient in patients"
-        :key="patient.id"
-        :patient="patient"
+      v-for="patient in patients"
+      :key="patient.id"
+      :patient="patient"
     ></PatientCard>
 
     <div class="pagination">
       <router-link
-          id="page-prev"
-          :to="{ name: 'Home', query: { page: page - 1 } }"
-          rel="prev"
-          v-if="page != 1"
+        id="page-prev"
+        :to="{ name: 'Home', query: { page: page - 1 } }"
+        rel="prev"
+        v-if="page != 1"
       >
         Prev Page
       </router-link>
 
       <router-link
-          id="page-next"
-          :to="{ name: 'Home', query: { page: page + 1 } }"
-          rel="next"
-          v-if="hasNextPage"
+        id="page-next"
+        :to="{ name: 'Home', query: { page: page + 1 } }"
+        rel="next"
+        v-if="hasNextPage"
       >
         Next Page
       </router-link>
@@ -61,26 +61,26 @@ export default {
   // eslint-disable-next-line
   beforeRouteEnter(routeTo, routeFrom, next) {
     PersonService.getPatients(4, parseInt(routeTo.query.page) || 1)
-        .then((response) => {
-          next((comp) => {
-            comp.patients = response.data
-            comp.totalpatients = response.headers['x-total-count']
-          })
+      .then((response) => {
+        next((comp) => {
+          comp.patients = response.data
+          comp.totalpatients = response.headers['x-total-count']
         })
-        .catch(() => {
-          next({name: 'NetworkError'})
-        })
+      })
+      .catch(() => {
+        next({ name: 'NetworkError' })
+      })
   },
   beforeRouteUpdate(routeTo, routeFrom, next) {
     PersonService.getPatients(3, parseInt(routeTo.query.page) || 1)
-        .then((response) => {
-          this.patients = response.data
-          this.totalPatients = response.headers['x-total-count']
-          next()
-        })
-        .catch(() => {
-          next({name: 'NetworkError'})
-        })
+      .then((response) => {
+        this.patients = response.data
+        this.totalPatients = response.headers['x-total-count']
+        next()
+      })
+      .catch(() => {
+        next({ name: 'NetworkError' })
+      })
   }
 }
 </script>

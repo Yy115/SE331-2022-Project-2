@@ -11,7 +11,7 @@
         Docrot Comments
       </router-link>
     </div>
-    <router-view :patient="GStore.patient"/>
+    <router-view :patient="GStore.patient" />
   </div>
 </template>
 <script>
