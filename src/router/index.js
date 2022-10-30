@@ -9,8 +9,12 @@ import NetWorkErrorView from '@/views/NetworkErrorView.vue'
 import DoctorCommentView from '@/views/DoctorCommentView.vue'
 import NProgress from 'nprogress'
 import PatientService from '@/services/PatientService.js'
+import DoctorListView from '@/views/DoctorListView.vue'
+import DoctorDetailView from '@/views/DoctorDetailsView.vue'
+import DoctorPatientView from '../views/DoctorPatientView.vue'
+import DoctorLayoutView from '@/views/DoctorLayoutView'
+import DoctorService from '../services/DoctorService.js'
 import GStore from '@/store'
-
 const routes = [
   {
     path: '/',
@@ -22,6 +26,14 @@ const routes = [
     path: '/about',
     name: 'about',
     component: SuggestionView
+  },
+  {
+    path: '/doctors',
+    name: 'doctorhome',
+    component: DoctorListView,
+    props: (route) => ({
+      page: parseInt(route.query.page) || 1
+    })
   },
   {
     path: '/patient/:id',
@@ -62,6 +74,45 @@ const routes = [
         name: 'DoctorComment',
         component: DoctorCommentView,
         props: true
+      }
+    ]
+  },
+  {
+    path: '/Doctor/:id',
+    name: 'DoctorLayoutView',
+    component: DoctorLayoutView,
+    props: true,
+    beforeEnter: (to) => {
+      return DoctorService.getDoctor(to.params.id)
+        .then((response) => {
+          GStore.doctor = response.data
+        })
+        .catch((error) => {
+          if (error.response && error.response.status == 404) {
+            this.$router.push({
+              name: '404Resource',
+              params: { resoutce: 'doctor' }
+            })
+          } else {
+            this.$router.push({ name: 'NetworkError' })
+          }
+        })
+    },
+    children: [
+      {
+        path: '/',
+        name: 'DoctorDetail',
+        component: DoctorDetailView,
+        props: true
+      },
+      {
+        path: '',
+        name: 'DoctorPatient',
+        component: DoctorPatientView,
+        props: (route) => ({
+          page: parseInt(route.query.page) || 1,
+          id: null
+        })
       }
     ]
   },

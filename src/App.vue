@@ -3,8 +3,8 @@
     {{ GStore.flashMessage }}
   </div>
   <nav>
-    <router-link to="/">homepage</router-link>
-    |
+    <router-link to="/">homepage</router-link> |
+    <router-link :to="{ name: 'doctorhome' }">Doctor</router-link> |
     <router-link to="/about">suggestion</router-link>
   </nav>
   <router-view />
@@ -29,7 +29,7 @@ export default {
 
 #flashMessage {
   animation-name: yellowfade;
-  animation-duration: 3s;
+  animation-duration: 3 s;
 }
 </style>
 <style>
@@ -69,7 +69,6 @@ nav a {
 nav a.router-link-exact-active {
   color: #42b983;
 }
-
 h4 {
   font-size: 20px;
 }
