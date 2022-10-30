@@ -1,6 +1,6 @@
 <template>
   <div v-if="patient">
-    <br />
+    <br/>
     <div class="patinfo">
       <h3>name: {{ patient.name }}</h3>
       <h3>surname: {{ patient.surname }}</h3>
@@ -23,12 +23,12 @@ export default {
   created() {
     // fetch person (by id) and set local person data
     PatientService.getPatient(this.id)
-      .then((response) => {
-        this.patient = response.data
-      })
-      .catch((error) => {
-        console.log(error)
-      })
+        .then((response) => {
+          this.patient = response.data
+        })
+        .catch((error) => {
+          console.log(error)
+        })
   }
 }
 </script>
