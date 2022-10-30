@@ -7,7 +7,7 @@
     |
     <router-link to="/about">suggestion</router-link>
   </nav>
-  <router-view/>
+  <router-view />
 </template>
 <script>
 export default {
