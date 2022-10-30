@@ -5,6 +5,7 @@
   <nav>
     <router-link to="/">homepage</router-link> |
     <router-link :to="{ name: 'doctorhome' }">Doctor</router-link> |
+    <router-link :to="{ name: 'Vaccine' }">Vaccine</router-link> |
     <router-link to="/about">suggestion</router-link>
   </nav>
   <router-view />

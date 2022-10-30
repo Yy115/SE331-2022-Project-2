@@ -1,5 +1,6 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import HomeView from '@/views/HomeView.vue'
+import Vaccine from '@/views/VaccineView.vue'
 import SuggestionView from '@/views/SuggestionView.vue'
 import PatientDetailView from '@/views/PatientDetailView.vue'
 import PatientVaccineView from '@/views/PatientVaccineView.vue'
@@ -10,7 +11,7 @@ import DoctorCommentView from '@/views/DoctorCommentView.vue'
 import NProgress from 'nprogress'
 import PatientService from '@/services/PatientService.js'
 import DoctorListView from '@/views/DoctorListView.vue'
-import DoctorDetailView from '@/views/DoctorDetailsView.vue'
+import DoctorDetailView from '@/views/DoctorDetailView.vue'
 import DoctorPatientView from '../views/DoctorPatientView.vue'
 import DoctorLayoutView from '@/views/DoctorLayoutView'
 import DoctorService from '../services/DoctorService.js'
@@ -34,6 +35,12 @@ const routes = [
     props: (route) => ({
       page: parseInt(route.query.page) || 1
     })
+  },
+  {
+    path: '/vaccine',
+    name: 'Vaccine',
+    component: Vaccine,
+    props: (route) => ({ page: parseInt(route.query.page) || 1 })
   },
   {
     path: '/patient/:id',

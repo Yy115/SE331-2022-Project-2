@@ -1,6 +1,6 @@
 <template>
   <div class="comment-form">
-    <h3>Please leave a comment</h3>
+    <h3>Leave your comment</h3>
     <textarea id="comment" v-model="comment" placeholder="Leave a comment">
 commit</textarea
     >
@@ -35,10 +35,15 @@ export default {
   padding-left: 10px;
   resize: none;
   overflow: auto;
-  height: 200px;
-  width: 500px;
+  height: 150px;
+  width: 300px;
   background: 'red';
   border-radius: 15px;
+  height: 100px;
+  width: 300px;
+  border: red 3px dashed;
+  line-height: 25px;
+  background-color: moccasin;
 }
 .button {
   font-size: 12px;
@@ -47,7 +52,7 @@ export default {
   height: 30px;
   border-width: 0px;
   border-radius: 3px;
-  background: #010101;
+  background: #cd3737;
   cursor: pointer;
   outline: none;
   font-family: Microsoft YaHei;

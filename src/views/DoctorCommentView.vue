@@ -4,7 +4,7 @@
   <div class="value">
     <span>Doctor id:</span>
     <span>
-      <input type="text" v-model="doctorid" />
+      <input class="input_class" type="text" v-model="doctorid" />
     </span>
   </div>
   <br />
@@ -58,3 +58,12 @@ export default {
   }
 }
 </script>
+<style>
+.input_class {
+  height: 50px;
+  width: 200px;
+  border: red 3px dashed;
+  line-height: 25px;
+  background-color: moccasin;
+}
+</style>

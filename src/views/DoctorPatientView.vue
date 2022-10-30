@@ -6,7 +6,7 @@
         patients
       </h1>
       <div class="home-list">
-        <ListItem
+        <PatientCard
           v-for="patient in patients"
           :key="patient.id"
           :patient="patient"
@@ -41,7 +41,7 @@
 
 <script>
 // @ is an alias to /src
-import ListItem from '@/components/ListItem.vue'
+import PatientCard from '@/components/PatientCard.vue'
 import PatientService from '@/services/PatientService.js'
 export default {
   name: 'DoctorPatient',
@@ -57,7 +57,7 @@ export default {
     }
   },
   components: {
-    ListItem
+    PatientCard
   },
   data() {
     return {

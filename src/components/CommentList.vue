@@ -35,5 +35,11 @@ export default {
   margin-left: 100px;
   margin-right: 100px;
   line-height: 100px;
+  height: 100px;
+  width: 300px;
+  border: red 3px dashed;
+  line-height: 25px;
+  background-color: moccasin;
+  text-align: center;
 }
 </style>
