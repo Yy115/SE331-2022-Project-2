@@ -1,9 +1,9 @@
 <template>
   <div class="col-md-12">
     <div class="card card-container">
-      <!-- <form>
+      <form>
         <UploadImages class="img" @changed="handleImages" />
-      </form> -->
+      </form>
       <br />
       <br />
       <Form @submit="handleRegister" :validation-schema="schema">
