@@ -2,7 +2,7 @@
   <div class="background">
     <div class="home">
       <h1>The Doctor List</h1>
-      <div class="home-list">
+      <div class="doctors">
         <DoctorListItem
           v-for="doctor in doctors"
           :key="doctor.id"
@@ -61,6 +61,7 @@ export default {
   beforeRouteEnter(routeTo, routeFrom, next) {
     DoctorService.getDoctors(2, parseInt(routeTo.query.page) || 1)
       .then((response) => {
+        console.log(response.data)
         next((comp) => {
           comp.doctors = response.data
           comp.totalitems = response.headers['x-total-count']
@@ -95,6 +96,16 @@ export default {
   display: flex;
   flex-direction: column;
   align-items: center;
+}
+.doctors {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.doctor-card:hover {
+  transform: scale(1.01);
+  box-shadow: 0 3px 12px 0 rgba(0, 0, 0, 0.2);
 }
 
 .pagination {

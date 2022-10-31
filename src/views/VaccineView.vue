@@ -2,16 +2,16 @@
   <h1>Vaccination of some students</h1>
   <h3>Data from one plus one group</h3>
   <div class="patients">
-    <PatientCard
+    <VaccineItem
       v-for="patient in patients"
       :key="patient.id"
       :patient="patient"
-    ></PatientCard>
+    ></VaccineItem>
 
     <div class="pagination">
       <router-link
         id="page-prev"
-        :to="{ name: 'Home', query: { page: page - 1 } }"
+        :to="{ name: 'Vaccine', query: { page: page - 1 } }"
         rel="prev"
         v-if="page != 1"
       >
@@ -20,7 +20,7 @@
 
       <router-link
         id="page-next"
-        :to="{ name: 'Home', query: { page: page + 1 } }"
+        :to="{ name: 'Vaccine', query: { page: page + 1 } }"
         rel="next"
         v-if="hasNextPage"
       >
@@ -32,10 +32,10 @@
 
 <script>
 // @ is an alias to /src
-import PatientCard from '@/components/PatientCard.vue'
+import VaccineItem from '@/components/VaccineItem.vue'
 import PersonService from '@/services/PatientService.js'
 export default {
-  name: 'HomeView',
+  name: 'VaccineView',
   props: {
     page: {
       type: Number,
@@ -43,7 +43,7 @@ export default {
     }
   },
   components: {
-    PatientCard
+    VaccineItem
   },
   data() {
     return {
@@ -58,7 +58,7 @@ export default {
     }
   },
   // eslint-disable-next-line
-  beforeRouteEnter(routeTo, routeFrom, next) {
+    beforeRouteEnter(routeTo, routeFrom, next) {
     PersonService.getPatients(4, parseInt(routeTo.query.page) || 1)
       .then((response) => {
         next((comp) => {

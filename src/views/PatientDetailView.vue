@@ -3,9 +3,9 @@
     <br />
     <div class="patinfo">
       <h3>name: {{ patient.name }}</h3>
-      <h3>surname: {{ patient.surname }}</h3>
-      <p>age: {{ patient.person_age }}</p>
-      <p>hometown: {{ patient.person_hometown }}</p>
+      <h3>surname: {{ patient.sur_name }}</h3>
+      <p>age: {{ patient.age }}</p>
+      <p>hometown: {{ patient.hometown }}</p>
     </div>
   </div>
 </template>
@@ -15,6 +15,7 @@ import PatientService from '@/services/PatientService.js'
 
 export default {
   props: ['id'],
+  inject: ['GStore'],
   data() {
     return {
       patient: null

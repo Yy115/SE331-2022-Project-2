@@ -1,12 +1,11 @@
 <template>
   <router-link
     class="patient-link"
-    :to="{ name: 'PatientLayout', params: { id: patient.id } }"
+    :to="{ name: 'PatientDetail', params: { id: patient.id } }"
   >
     <div class="patient-card">
-      <span>{{ patient.Vaccine_name }}</span>
-      <h4>{{ patient.person_name }}</h4>
-      <span>{{ patient.state }}</span>
+      <h4>{{ patient.name }} {{ patient.sur_name }}</h4>
+      <span>Vaccine Status:{{ patient.vaccined_status }}</span>
     </div>
   </router-link>
 </template>

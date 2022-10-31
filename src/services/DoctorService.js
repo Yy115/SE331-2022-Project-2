@@ -1,8 +1,8 @@
 import apiClient from '@/services/AxiosClient.js'
 
 export default {
-  getTotalDoctors() {
-    return apiClient.get('/doctors')
+  getTotalDoctors(key) {
+    return apiClient.get('/doctors?title=' + key)
   },
   getDoctor(id) {
     return apiClient.get('/doctor/' + id)

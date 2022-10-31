@@ -1,10 +1,10 @@
 <template>
   <div>
-    <div id="building">
+    <div id="center">
       <!-- <div class="left-nav" @click="changeImage">
         <img v-for="url in doctor.imageUrl" :key="url" :src="url" />
       </div> -->
-      <div class="list-item">
+      <div class="doctor-detail">
         <ul>
           <li>
             <br />
@@ -46,63 +46,26 @@ export default {
 }
 </script>
 <style scoped>
-.name {
-  color: green;
-  font: bold;
-  font-size: 20px;
-}
-#building {
+#center {
   display: flex;
   flex-direction: column;
-  padding: 10px;
-  width: 600px;
-  height: 300px;
+  align-items: center;
+}
+.doctor-detail {
+  border-radius: 5px;
+  padding: 20px;
+  width: 450px;
   cursor: pointer;
-  border: 3px solid #a6abb1;
-  border-radius: 20px;
-  margin: auto;
-  text-align: center;
-  background-image: url('../assets/card.jpg');
-  background-position: absolute;
-  background-size: 100% 100%;
-  /* background-color: blanchedalmond; */
+  border: 1px solid #39495c;
+  margin-bottom: 18px;
+  background-color: lightcyan;
+  margin: 0, auto;
 }
-.list-item {
-  /* border: 3px double #39495c; */
-  text-align: left;
-  float: right;
-  position: absolute;
-  width: 300px;
-  margin: 10px 0 0 190px;
+
+.doctor-detail:hover {
+  transform: scale(1.01);
+  box-shadow: 0 3px 12px 0 rgba(0, 0, 0, 0.2);
 }
-.left-nav {
-  float: left;
-  width: 66px;
-  height: 66px;
-  background-color: #fff;
-  padding: 3px;
-  box-shadow: 0 2px 2px rgba(0, 0, 0, 0.3);
-  margin: 20px 0 10px 100px;
-  box-sizing: border-box;
-  border-radius: 50%;
-}
-.left-nav img {
-  display: block;
-  width: 60px;
-  height: 60px;
-  border-radius: 50%;
-}
-.right-nav {
-  float: right;
-}
-/* #building {
-  background: url('../assets/bc.jpg');
-  width: 100%;
-  height: 100%;
-  position: absolute;
-  overflow: auto;
-  background-size: 100% 100%;
-} */
 body {
   overflow: auto;
 }
