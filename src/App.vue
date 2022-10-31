@@ -2,19 +2,107 @@
   <div id="flashMessage" v-if="GStore.flashMessage">
     {{ GStore.flashMessage }}
   </div>
+  <nav class="navbar navbar-expand">
+    <ul v-if="!GStore.currentUser" class="navbar-nav ml-auto">
+      <li class="nav-item">
+        <router-link to="/register" class="nav-link"
+          ><font-awesome-icon icon="user-plus" />Sign Up</router-link
+        >
+      </li>
+      <li class="nav-item">
+        <router-link to="/login" class="nav-link">
+          <font-awesome-icon icon="sign-in-alt" />Login</router-link
+        >
+      </li>
+    </ul>
+    <ul v-if="GStore.currentUser" class="navbar-nav ml-auto">
+      <li class="nav-item" v-if="isAdmin">
+        <router-link :to="{ name: 'Home' }" class="nav-link">
+          <font-awesome-icon icon="user" />
+          {{ GStore.currentUser.name }} {{ GStore.currentUser.sur_name }}
+        </router-link>
+      </li>
+      <li class="nav-item" v-else-if="isDoctor">
+        <router-link
+          :to="{ name: 'DoctorDetail', params: { id: GStore.currentUser.id } }"
+          class="nav-link"
+        >
+          <font-awesome-icon icon="user" />
+          {{ GStore.currentUser.name }} {{ GStore.currentUser.sur_name }}
+        </router-link>
+      </li>
+      <li class="nav-item" v-else-if="isPatient">
+        <router-link
+          :to="{ name: 'PatientDetail', params: { id: GStore.currentUser.id } }"
+          class="nav-link"
+        >
+          <font-awesome-icon icon="user" />
+          {{ GStore.currentUser.name }} {{ GStore.currentUser.sur_name }}
+        </router-link>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" @click="logout">
+          <font-awesome-icon icon="sign-out-alt" /> Logout</a
+        >
+      </li>
+    </ul>
+  </nav>
   <nav>
-    <router-link to="/">homepage</router-link> |
-    <router-link :to="{ name: 'doctorhome' }">Doctor</router-link> |
-    <router-link :to="{ name: 'Vaccine' }">Vaccine</router-link> |
+    <span v-if="isPatient">
+      <router-link :to="{ name: 'Home' }">Patient Home</router-link> |
+    </span>
+    <span v-if="isDoctor"
+      ><router-link :to="{ name: 'doctorhome' }">Doctor</router-link> |</span
+    >
+
+    <span v-if="isAdmin">
+      <router-link
+        :to="{
+          name: 'Vaccine'
+        }"
+      >
+        Vaccines
+      </router-link>
+      |
+      <router-link
+        :to="{
+          name: 'AdminUser'
+        }"
+      >
+        Users
+      </router-link>
+      |
+    </span>
     <router-link to="/about">suggestion</router-link>
   </nav>
   <router-view />
 </template>
 <script>
+import AuthService from './services/AuthService.js'
 export default {
   inject: ['GStore'], // <----
   created() {
     document.title = 'Vaccination'
+  },
+  computed: {
+    currentUser() {
+      return localStorage.getItem('user')
+    },
+    isAdmin() {
+      return AuthService.hasRoles('ROLE_ADMIN')
+    },
+    isDoctor() {
+      return AuthService.hasRoles('ROLE_DOCTOR')
+    },
+    isPatient() {
+      return AuthService.hasRoles('ROLE_PATIENT')
+    }
+  },
+  methods: {
+    logout() {
+      AuthService.logout()
+      this.$router.push({ name: 'Login' })
+    }
   }
 }
 </script>

@@ -1,8 +1,8 @@
 <template>
   <div>
-    <div id="center">
+    <div id="center" v-if="isDoctor">
       <!-- <div class="left-nav" @click="changeImage">
-        <img v-for="url in doctor.imageUrl" :key="url" :src="url" />
+        <img v-for="url in patient.imageUrl" :key="url" :src="url" />
       </div> -->
       <div class="doctor-detail">
         <ul>
@@ -33,8 +33,10 @@
   </div>
 </template>
 <script>
+import AuthService from '@/services/AuthService.js'
 export default {
   props: ['id', 'doctor'],
+  inject: ['GStore'],
   methods: {
     changeImage() {
       this.$router.push({
@@ -42,10 +44,46 @@ export default {
         params: { id: this.doctor.id }
       })
     }
+  },
+  computed: {
+    isDoctor() {
+      return AuthService.hasRoles('ROLE_DOCTOR')
+    }
   }
 }
 </script>
 <style scoped>
+.left-nav {
+  float: left;
+  width: 88px;
+  height: 88px;
+  background-color: #fff;
+  padding: 3px;
+  box-shadow: 0 2px 2px rgba(0, 0, 0, 0.3);
+  margin: 20px 50px 10px 50px;
+  box-sizing: border-box;
+  border-radius: 50%;
+}
+.left-nav img {
+  display: block;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+}
+.box-class {
+  display: flex;
+  flex-direction: column;
+  padding: 10px;
+  width: 600px;
+  height: 300px;
+  cursor: pointer;
+  border: 3px solid #a6abb1;
+  border-radius: 20px;
+  margin: auto;
+  text-align: center;
+  background-position: absolute;
+  background-size: 100% 100%;
+}
 #center {
   display: flex;
   flex-direction: column;

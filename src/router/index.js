@@ -15,6 +15,11 @@ import DoctorDetailView from '@/views/DoctorDetailView.vue'
 import DoctorPatientView from '../views/DoctorPatientView.vue'
 import DoctorLayoutView from '@/views/DoctorLayoutView'
 import DoctorService from '../services/DoctorService.js'
+import AdminUser from '@/views/AdminUserView.vue'
+import Register from '@/views/RegisterView.vue'
+import Login from '@/views/LoginFormView.vue'
+import ChangeImage from '@/views/ChangeImage.vue'
+import DoctorChangeImage from '@/views/DoctorChangeImage.vue'
 import GStore from '@/store'
 const routes = [
   {
@@ -35,6 +40,11 @@ const routes = [
     props: (route) => ({
       page: parseInt(route.query.page) || 1
     })
+  },
+  {
+    path: '/user',
+    name: 'AdminUser',
+    component: AdminUser
   },
   {
     path: '/vaccine',
@@ -81,6 +91,12 @@ const routes = [
         name: 'DoctorComment',
         component: DoctorCommentView,
         props: true
+      },
+      {
+        path: '',
+        name: 'ChangeImage',
+        component: ChangeImage,
+        props: true
       }
     ]
   },
@@ -120,8 +136,24 @@ const routes = [
           page: parseInt(route.query.page) || 1,
           id: null
         })
+      },
+      {
+        path: '',
+        name: 'DoctorChangeImage',
+        component: DoctorChangeImage,
+        props: true
       }
     ]
+  },
+  {
+    path: '/login',
+    name: 'Login',
+    component: Login
+  },
+  {
+    path: '/register',
+    name: 'Register',
+    component: Register
   },
   {
     path: '/404/:resource',

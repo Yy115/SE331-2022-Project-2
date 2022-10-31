@@ -1,19 +1,22 @@
 <template>
   <h3>Doctor Comment</h3>
   <CommentList v-if="comments.length" :comments="comments"></CommentList>
-  <div class="value">
-    <span>Doctor id:</span>
-    <span>
-      <input class="input_class" type="text" v-model="doctorid" />
-    </span>
+  <div v-if="isDoctor">
+    <div class="value">
+      <span>Doctor id:</span>
+      <span>
+        <input class="input_class" type="text" v-model="doctorid" />
+      </span>
+    </div>
+    <br />
+    <CommentForm @comment-submitted="addComment"></CommentForm>
   </div>
-  <br />
-  <CommentForm @comment-submitted="addComment"></CommentForm>
 </template>
 <script>
 import CommentForm from '@/components/CommentForm.vue'
 import CommentList from '@/components/CommentList.vue'
 import CommentService from '@/services/CommentService.js'
+import AuthService from '@/services/AuthService.js'
 export default {
   inject: ['GStore'],
   components: {
@@ -54,6 +57,11 @@ export default {
         this.GStore.flashMessage = ''
       }, 3000)
       //      this.$router.go(0)
+    }
+  },
+  computed: {
+    isDoctor() {
+      return AuthService.hasRoles('ROLE_DOCTOR')
     }
   }
 }

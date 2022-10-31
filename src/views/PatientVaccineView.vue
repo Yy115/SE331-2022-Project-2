@@ -1,13 +1,6 @@
 <template>
   <h1>Vaccination of {{ patient.name }} {{ patient.sur_name }}</h1>
-  <span>Doctor:</span>
-  <span v-if="patient.doctor" class="color">
-    {{ patient.doctor.name }} {{ patient.doctor.sur_name }}
-  </span>
-  <span v-else>
-    <input type="text" v-model="doctorid" />
-    <button @click="updatedoctor">Confirm</button>
-  </span>
+
   <h3 class="color">'{{ patient.vaccined_status }}'</h3>
   <center>
     <div class="dose1" v-if="patient.firstdose_name">
@@ -37,64 +30,75 @@
       <br />
     </div>
   </center>
-  <h3 class="color">You can update this patient's vaccine</h3>
-  <center>
-    <div class="dose4" v-if="!patient.firstdose_name">
-      <b>First dose: </b>
+  <div v-if="isAdmin">
+    <h3 class="color">You can update this patient's vaccine</h3>
+    <span>Doctor:</span>
+    <span v-if="patient.doctor" class="color">
+      {{ patient.doctor.name }} {{ patient.doctor.sur_name }}
+    </span>
+    <span v-else>
+      <input type="text" v-model="doctorid" />
+      <button @click="updatedoctor">Confirm</button>
+    </span>
+    <center>
+      <div class="dose4" v-if="!patient.firstdose_name">
+        <b>First dose: </b>
+        <br />
+        <span>
+          vaccine name: <input type="text" v-model="firstdose_name" />
+        </span>
+        <br />
+        <span>
+          vaccine time:
+          <input type="text" v-model="firstdose_time" />
+        </span>
+        <br />
+      </div>
       <br />
-      <span>
-        vaccine name: <input type="text" v-model="firstdose_name" />
-      </span>
+      <div class="dose4" v-if="!patient.seconddose_name">
+        <b>Second dose: </b>
+        <br />
+        <span>
+          vaccine name: <input type="text" v-model="seconddose_name" />
+        </span>
+        <br />
+        <span>
+          vaccine time:
+          <input type="text" v-model="seconddose_time" />
+        </span>
+        <br />
+      </div>
       <br />
-      <span>
-        vaccine time:
-        <input type="text" v-model="firstdose_time" />
-      </span>
+      <div class="dose4" v-if="!patient.thirddose_name">
+        <b>third dose: </b>
+        <br />
+        <span>
+          vaccine name: <input type="text" v-model="thirddose_name" />
+        </span>
+        <br />
+        <span>
+          vaccine time:
+          <input type="text" v-model="thirddose_time" />
+        </span>
+        <br />
+      </div>
       <br />
-    </div>
-    <br />
-    <div class="dose4" v-if="!patient.seconddose_name">
-      <b>Second dose: </b>
-      <br />
-      <span>
-        vaccine name: <input type="text" v-model="seconddose_name" />
-      </span>
-      <br />
-      <span>
-        vaccine time:
-        <input type="text" v-model="seconddose_time" />
-      </span>
-      <br />
-    </div>
-    <br />
-    <div class="dose4" v-if="!patient.thirddose_name">
-      <b>third dose: </b>
-      <br />
-      <span>
-        vaccine name: <input type="text" v-model="thirddose_name" />
-      </span>
-      <br />
-      <span>
-        vaccine time:
-        <input type="text" v-model="thirddose_time" />
-      </span>
-      <br />
-    </div>
-    <br />
-    <div class="dose4">
-      <b>vaccine status: </b>
-      <br />
-      <span>
-        <BaseSelect :options="this.Status" v-model="vaccined_status" />
-      </span>
-      <br />
-      <button @click="addvaccine">update</button>
-    </div>
-  </center>
+      <div class="dose4">
+        <b>vaccine status: </b>
+        <br />
+        <span>
+          <BaseSelect :options="this.Status" v-model="vaccined_status" />
+        </span>
+        <br />
+        <button @click="addvaccine">update</button>
+      </div>
+    </center>
+  </div>
 </template>
 
 <script>
 import PatientService from '@/services/PatientService.js'
+import AuthService from '@/services/AuthService.js'
 import BaseSelect from '@/components/BaseSelect.vue'
 export default {
   props: ['id', 'patient'],
@@ -174,6 +178,11 @@ export default {
         console.log(response)
         this.$router.go(0)
       })
+    }
+  },
+  computed: {
+    isAdmin() {
+      return AuthService.hasRoles('ROLE_ADMIN')
     }
   }
 }

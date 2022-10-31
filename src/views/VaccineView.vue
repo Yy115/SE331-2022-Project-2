@@ -1,7 +1,7 @@
 <template>
   <h1>Vaccination of some students</h1>
   <h3>Data from one plus one group</h3>
-  <div class="patients">
+  <div class="patients" v-if="isAdmin">
     <VaccineItem
       v-for="patient in patients"
       :key="patient.id"
@@ -34,6 +34,7 @@
 // @ is an alias to /src
 import VaccineItem from '@/components/VaccineItem.vue'
 import PersonService from '@/services/PatientService.js'
+import AuthService from '@/services/AuthService.js'
 export default {
   name: 'VaccineView',
   props: {
@@ -55,6 +56,9 @@ export default {
     hasNextPage() {
       let totalPages = Math.ceil(this.totalpatients / 4)
       return this.page < totalPages
+    },
+    isAdmin() {
+      return AuthService.hasRoles('ROLE_ADMIN')
     }
   },
   // eslint-disable-next-line
@@ -97,14 +101,15 @@ export default {
 .pagination a {
   flex: 1;
   text-decoration: none;
-  color: #2c3e50;
 }
 
 #page-prev {
   text-align: left;
+  color: aliceblue;
 }
 
 #page-next {
   text-align: right;
+  color: aliceblue;
 }
 </style>

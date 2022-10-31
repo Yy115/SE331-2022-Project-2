@@ -44,6 +44,6 @@ export default {
     }
   },
   register(user) {
-    return apiClient.post('/user', user)
+    return apiClient.post('/register', user)
   }
 }

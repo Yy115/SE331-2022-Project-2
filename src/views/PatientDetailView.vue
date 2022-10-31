@@ -1,11 +1,16 @@
 <template>
   <div v-if="patient">
     <br />
-    <div class="patinfo">
-      <h3>name: {{ patient.name }}</h3>
-      <h3>surname: {{ patient.sur_name }}</h3>
-      <p>age: {{ patient.age }}</p>
-      <p>hometown: {{ patient.hometown }}</p>
+    <div class="box-class">
+      <div class="left-nav" @click="changeImage">
+        <img v-for="url in patient.imageUrl" :key="url" :src="url" />
+      </div>
+      <div class="patinfo">
+        <h3>name: {{ patient.name }}</h3>
+        <h3>surname: {{ patient.sur_name }}</h3>
+        <h3>age: {{ patient.age }}</h3>
+        <h3>hometown: {{ patient.hometown }}</h3>
+      </div>
     </div>
   </div>
 </template>
@@ -19,6 +24,14 @@ export default {
   data() {
     return {
       patient: null
+    }
+  },
+  methods: {
+    changeImage() {
+      this.$router.push({
+        name: 'ChangeImage',
+        params: { id: this.patient.id }
+      })
     }
   },
   created() {
@@ -37,5 +50,38 @@ export default {
 .patinfo {
   border: 5px burlywood dotted;
   background-color: lightskyblue;
+  text-align: center;
+  float: left;
+}
+.left-nav {
+  float: left;
+  width: 88px;
+  height: 88px;
+  background-color: #fff;
+  padding: 3px;
+  box-shadow: 0 2px 2px rgba(0, 0, 0, 0.3);
+  margin: 20px 50px 10px 50px;
+  box-sizing: border-box;
+  border-radius: 50%;
+}
+.left-nav img {
+  display: block;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+}
+.box-class {
+  display: flex;
+  flex-direction: column;
+  padding: 10px;
+  width: 600px;
+  height: 300px;
+  cursor: pointer;
+  border: 3px solid #a6abb1;
+  border-radius: 20px;
+  margin: auto;
+  text-align: center;
+  background-position: absolute;
+  background-size: 100% 100%;
 }
 </style>

@@ -1,5 +1,5 @@
 <template>
-  <div class="background">
+  <div class="background" v-if="isDoctor">
     <div class="home">
       <h1>
         Doctor {{ this.GStore.doctor.name }} {{ this.GStore.doctor.sur_name }}'s
@@ -43,6 +43,7 @@
 // @ is an alias to /src
 import PatientCard from '@/components/PatientCard.vue'
 import PatientService from '@/services/PatientService.js'
+import AuthService from '@/services/AuthService.js'
 export default {
   name: 'DoctorPatient',
   inject: ['GStore'],
@@ -112,6 +113,9 @@ export default {
     hasNextPage() {
       let totalPages = Math.ceil(this.totalitems / 2)
       return this.page < totalPages
+    },
+    isDoctor() {
+      return AuthService.hasRoles('ROLE_DOCTOR')
     }
   }
 }
@@ -130,17 +134,18 @@ export default {
 .pagination a {
   flex: 1;
   text-decoration: none;
-  color: #2c3e50;
 }
 #page-prev {
   text-align: left;
   margin-right: 100px;
   padding-bottom: 100px;
+  color: aliceblue;
 }
 
 #page-next {
   text-align: right;
   margin-left: 100px;
   padding-bottom: 100px;
+  color: aliceblue;
 }
 </style>
