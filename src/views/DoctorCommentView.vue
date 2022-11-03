@@ -1,9 +1,9 @@
 <template>
-  <h3>Doctor Comment</h3>
-  <CommentList v-if="comments.length" :comments="comments"></CommentList>
+  <h3 class="aaa">Doctor Comment</h3>
+  <CommentList v-if="comments.length" :comments="comments"></CommentList><br />
   <div v-if="isDoctor">
     <div class="value">
-      <span>Doctor id:</span>
+      <span class="aaa">Doctor id:</span>
       <span>
         <input class="input_class" type="text" v-model="doctorid" />
       </span>

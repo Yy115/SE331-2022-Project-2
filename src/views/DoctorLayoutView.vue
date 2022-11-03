@@ -1,8 +1,12 @@
 <template>
   <div class="background" v-if="GStore.doctor">
     <div id="nav">
-      <router-link :to="{ name: 'DoctorDetail' }">DoctorDetail</router-link> |
+      <router-link class="bbb" :to="{ name: 'DoctorDetail' }"
+        >DoctorDetail</router-link
+      >
+      |
       <router-link
+        class="bbb"
         :to="{ name: 'DoctorPatient', params: { id: GStore.doctor.id } }"
         >DoctorPatients</router-link
       >

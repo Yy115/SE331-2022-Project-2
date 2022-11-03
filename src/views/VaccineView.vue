@@ -1,6 +1,7 @@
 <template>
-  <h1>Vaccination of some students</h1>
-  <h3>Data from one plus one group</h3>
+  <h1 class="aaa">Vaccination of some patients</h1>
+  <h3 class="aaa">Data from one plus one group</h3>
+  <br />
   <div class="patients" v-if="isAdmin">
     <VaccineItem
       v-for="patient in patients"
@@ -17,7 +18,7 @@
       >
         Prev Page
       </router-link>
-
+      <span style="color: aliceblue">{{ this.page }}</span>
       <router-link
         id="page-next"
         :to="{ name: 'Vaccine', query: { page: page + 1 } }"
@@ -87,7 +88,7 @@ export default {
   }
 }
 </script>
-<style scoped>
+<style>
 .patients {
   display: flex;
   flex-direction: column;
@@ -96,6 +97,7 @@ export default {
 .pagination {
   display: flex;
   width: 290px;
+  color: aqua;
 }
 
 .pagination a {

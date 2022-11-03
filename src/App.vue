@@ -48,15 +48,22 @@
     </ul>
   </nav>
   <nav>
-    <span v-if="isPatient">
-      <router-link :to="{ name: 'Home' }">Patient Home</router-link> |
+    <span class="aaa" v-if="isPatient">
+      <router-link class="aaa" :to="{ name: 'Home' }">
+        Patient Home</router-link
+      >
+      |
     </span>
-    <span v-if="isDoctor"
-      ><router-link :to="{ name: 'doctorhome' }">Doctor</router-link> |</span
+    <span class="aaa" v-if="isDoctor"
+      ><router-link class="aaa" :to="{ name: 'doctorhome' }">
+        Doctor</router-link
+      >
+      |</span
     >
 
     <span v-if="isAdmin">
       <router-link
+        class="aaa"
         :to="{
           name: 'Vaccine'
         }"
@@ -65,6 +72,7 @@
       </router-link>
       |
       <router-link
+        class="aaa"
         :to="{
           name: 'AdminUser'
         }"
@@ -73,7 +81,7 @@
       </router-link>
       |
     </span>
-    <router-link to="/about">suggestion</router-link>
+    <router-link class="aaa" to="/about">suggestion</router-link>
   </nav>
   <router-view />
 </template>
@@ -160,5 +168,8 @@ nav a.router-link-exact-active {
 }
 h4 {
   font-size: 20px;
+}
+.aaa {
+  color: lightblue;
 }
 </style>

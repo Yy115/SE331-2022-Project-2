@@ -1,5 +1,5 @@
 <template>
-  <h1>Vaccination of {{ patient.name }} {{ patient.sur_name }}</h1>
+  <h1 class="aaa">Vaccination of {{ patient.name }} {{ patient.sur_name }}</h1>
 
   <h3 class="color">'{{ patient.vaccined_status }}'</h3>
   <center>
@@ -32,7 +32,7 @@
   </center>
   <div v-if="isAdmin">
     <h3 class="color">You can update this patient's vaccine</h3>
-    <span>Doctor:</span>
+    <span class="aaa">Doctor: </span>
     <span v-if="patient.doctor" class="color">
       {{ patient.doctor.name }} {{ patient.doctor.sur_name }}
     </span>
@@ -174,6 +174,7 @@ export default {
           return
         }
       }
+      console.log(this.patient1)
       PatientService.addvaccine(this.patient1).then((response) => {
         console.log(response)
         this.$router.go(0)

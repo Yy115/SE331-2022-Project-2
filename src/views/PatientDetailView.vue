@@ -1,10 +1,10 @@
 <template>
   <div v-if="patient">
     <br />
+    <div>
+      <img class="img" v-for="url in patient.imageUrl" :key="url" :src="url" />
+    </div>
     <div class="box-class">
-      <div class="left-nav" @click="changeImage">
-        <img v-for="url in patient.imageUrl" :key="url" :src="url" />
-      </div>
       <div class="patinfo">
         <h3>name: {{ patient.name }}</h3>
         <h3>surname: {{ patient.sur_name }}</h3>
@@ -26,14 +26,6 @@ export default {
       patient: null
     }
   },
-  methods: {
-    changeImage() {
-      this.$router.push({
-        name: 'ChangeImage',
-        params: { id: this.patient.id }
-      })
-    }
-  },
   created() {
     // fetch person (by id) and set local person data
     PatientService.getPatient(this.id)
@@ -53,6 +45,9 @@ export default {
   text-align: center;
   float: left;
 }
+.img {
+  align-content: center;
+}
 .left-nav {
   float: left;
   width: 88px;
@@ -70,12 +65,16 @@ export default {
   height: 60px;
   border-radius: 50%;
 }
+.img {
+  width: 150px;
+  height: 200px;
+}
 .box-class {
   display: flex;
   flex-direction: column;
   padding: 10px;
   width: 600px;
-  height: 300px;
+  height: 200px;
   cursor: pointer;
   border: 3px solid #a6abb1;
   border-radius: 20px;

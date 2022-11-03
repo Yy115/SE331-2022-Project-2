@@ -1,7 +1,7 @@
 <template>
   <div class="background" v-if="isDoctor">
     <div class="home">
-      <h1>
+      <h1 class="aaa">
         Doctor {{ this.GStore.doctor.name }} {{ this.GStore.doctor.sur_name }}'s
         patients
       </h1>

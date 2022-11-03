@@ -1,6 +1,6 @@
 <template>
-  <h1>Vaccination of some students</h1>
-  <h3>Data from one plus one group</h3>
+  <h1 class="aaa">Vaccination of some patients</h1>
+  <h3 class="aaa">Data from one plus one group</h3>
   <div class="patients" v-if="isAdmin">
     <PatientCard
       v-for="patient in patients"
@@ -17,7 +17,7 @@
       >
         Prev Page
       </router-link>
-
+      <span style="color: aliceblue">{{ this.page }}</span>
       <router-link
         id="page-next"
         :to="{ name: 'Home', query: { page: page + 1 } }"
@@ -123,14 +123,23 @@ export default {
   flex: 1;
   text-decoration: none;
 }
+.pagination:hover {
+  color: yellow;
+}
 
 #page-prev {
   text-align: left;
   color: aliceblue;
 }
+#page-prev：hover {
+  color: yellow;
+}
 
 #page-next {
   text-align: right;
   color: aliceblue;
+}
+#page-next：hover {
+  color: yellow;
 }
 </style>

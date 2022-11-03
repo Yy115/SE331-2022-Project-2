@@ -1,12 +1,14 @@
 <template>
   <div v-if="GStore.patient">
     <div id="nav">
-      <router-link :to="{ name: 'PatientDetail' }">
+      <router-link class="bbb" :to="{ name: 'PatientDetail' }">
         Patient Details
       </router-link>
       |
-      <router-link :to="{ name: 'PatientVaccine' }">Vaccination</router-link>|
-      <router-link :to="{ name: 'DoctorComment' }">
+      <router-link class="bbb" :to="{ name: 'PatientVaccine' }"
+        >Vaccination</router-link
+      >|
+      <router-link class="bbb" :to="{ name: 'DoctorComment' }">
         Doctor Comments
       </router-link>
     </div>
@@ -18,3 +20,11 @@ export default {
   inject: ['GStore']
 }
 </script>
+<style>
+.bbb {
+  color: lightgoldenrodyellow;
+}
+.bbb:hover {
+  color: yellow;
+}
+</style>

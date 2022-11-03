@@ -1,7 +1,7 @@
 <template>
   <div class="background" v-if="isAdmin">
     <div class="home">
-      <h1>The Doctor List</h1>
+      <h1 class="aaa">The Doctor List</h1>
       <div class="doctors">
         <DoctorListItem
           v-for="doctor in doctors"
@@ -20,7 +20,7 @@
       >
         Prev Page
       </router-link>
-      <span>{{ this.page }}</span>
+      <span style="color: aliceblue">{{ this.page }}</span>
       <router-link
         id="page-next"
         :to="{

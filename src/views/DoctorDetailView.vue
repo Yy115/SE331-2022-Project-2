@@ -1,9 +1,9 @@
 <template>
   <div>
     <div id="center" v-if="isDoctor">
-      <!-- <div class="left-nav" @click="changeImage">
-        <img v-for="url in patient.imageUrl" :key="url" :src="url" />
-      </div> -->
+      <div>
+        <img class="img" v-for="url in doctor.imageUrl" :key="url" :src="url" />
+      </div>
       <div class="doctor-detail">
         <ul>
           <li>
@@ -70,6 +70,10 @@ export default {
   height: 60px;
   border-radius: 50%;
 }
+.img {
+  width: 150px;
+  height: 200px;
+}
 .box-class {
   display: flex;
   flex-direction: column;
@@ -96,7 +100,7 @@ export default {
   cursor: pointer;
   border: 1px solid #39495c;
   margin-bottom: 18px;
-  background-color: lightcyan;
+  background-color: rgb(190, 218, 255);
   margin: 0, auto;
 }
 
@@ -128,10 +132,10 @@ li {
 }
 .value {
   padding-left: 40%;
-  color: green;
+  color: #39495c;
 }
 .name {
-  color: green;
+  color: #39495c;
   font: bold;
   font-size: 20px;
   padding-bottom: 0px;
