@@ -7,8 +7,8 @@
       <div class="doctor-card">
         <ul>
           <li>
-            <div class="name">Name:{{ doctor.name }}</div>
-            <div class="name">Surname:{{ doctor.sur_name }}</div>
+            <div class="name">Name: {{ doctor.name }}</div>
+            <div class="name">Surname: {{ doctor.sur_name }}</div>
           </li>
         </ul>
       </div>
@@ -37,7 +37,7 @@ export default {
 </script>
 <style scoped>
 .name {
-  color: green;
+  color: rgba(21, 26, 160, 0.2);
   font: bold;
   font-size: 20px;
 }
@@ -46,9 +46,10 @@ export default {
   padding: 20px;
   width: 450px;
   cursor: pointer;
-  border: 1px solid #39495c;
+  border: 2px solid #39495c;
   margin-bottom: 18px;
-  background-color: lightcyan;
+  background-color: rgb(208, 225, 247);
+  border: 6px deepskyblue dotted;
 }
 
 .doctor-card:hover {
@@ -82,7 +83,7 @@ li {
   padding-left: 40%;
 }
 .name {
-  color: green;
+  color: #39495c;
   font: bold;
   font-size: 20px;
   padding-bottom: 0px;

@@ -1,6 +1,7 @@
 <template>
+  <br />
   <div class="comment-list">
-    <h3>Comments</h3>
+    <h3 class="aaa">Comments</h3>
     <center>
       <ul>
         <li v-for="(comment, index) in comments" :key="index">
@@ -35,7 +36,7 @@ export default {
   margin-left: 100px;
   margin-right: 100px;
   line-height: 100px;
-  height: 100px;
+  height: 50px;
   width: 300px;
   border: red 3px dashed;
   line-height: 25px;

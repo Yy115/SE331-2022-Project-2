@@ -1,5 +1,5 @@
 <template>
-  <div class="mytable" width="1600">
+  <div>
     <!-- <table id="table-id">
       <thead>
         <tr>
@@ -39,42 +39,62 @@
         </tr>
       </tbody>
     </table> -->
-    <h1></h1>
-    <h2></h2>
-    <table>
-      <tr>
-        <th>Patient ID: {{ patient.id }}</th>
-        <th>{{ patient.name }} {{ patient.sur_name }}</th>
-        <th>Vaccine Status {{ patient.vaccind_status }}</th>
-        <th v-if="patient.firstdose_name">
-          First Dose: {{ patient.firstdose_name }}
-        </th>
-        <th v-if="patient.firstdose_time">
-          Time: {{ patient.firstdose_time }}
-        </th>
-        <th v-if="patient.seconddose_name">
-          Second Dose: {{ patient.seconddose_name }}
-        </th>
-        <th v-if="patient.seconddose_time">
-          Time: {{ patient.seconddose_time }}
-        </th>
-        <th v-if="patient.thirddose_name">
-          Third Dose: {{ patient.thirddose_name }}
-        </th>
-        <th v-if="patient.thirddose_time">
-          Time: {{ patient.thirddose_time }}
-        </th>
-        <th>
-          <router-link
-            :to="{
-              name: 'PatientVaccine',
-              params: { id: patient.id }
-            }"
-            >Confirm</router-link
-          >
-        </th>
-      </tr>
-      <br />
+    <table class="table">
+      <center>
+        <thead class="thead">
+          <tr>
+            <th>Patient ID</th>
+            <th>patient name</th>
+            <th>Vaccine Status</th>
+            <th>First Dose</th>
+            <th>First Dose Time</th>
+            <th>Second Dose</th>
+            <th>Second Dose Time</th>
+            <th>Third Dose</th>
+            <th>Third Dose Time</th>
+            <th>Confirm</th>
+          </tr>
+        </thead>
+        <tbody class="tbody">
+          <tr>
+            <th>{{ patient.id }}</th>
+            <th>{{ patient.name }} {{ patient.sur_name }}</th>
+            <th>{{ patient.vaccined_status }}</th>
+            <th v-if="patient.firstdose_name">{{ patient.firstdose_name }}</th>
+            <th v-else>/</th>
+            <th v-if="patient.firstdose_time">
+              {{ patient.firstdose_time }}
+            </th>
+            <th v-else>/</th>
+            <th v-if="patient.seconddose_name">
+              {{ patient.seconddose_name }}
+            </th>
+            <th v-else>/</th>
+            <th v-if="patient.seconddose_time">
+              {{ patient.seconddose_time }}
+            </th>
+            <th v-else>/</th>
+            <th v-if="patient.thirddose_name">
+              {{ patient.thirddose_name }}
+            </th>
+            <th v-else>/</th>
+            <th v-if="patient.thirddose_time">
+              {{ patient.thirddose_time }}
+            </th>
+            <th v-else>/</th>
+            <th>
+              <router-link
+                :to="{
+                  name: 'PatientVaccine',
+                  params: { id: patient.id }
+                }"
+                >Confirm</router-link
+              >
+            </th>
+          </tr>
+        </tbody>
+        <br />
+      </center>
     </table>
   </div>
 </template>
@@ -191,5 +211,17 @@ li {
 }
 .status {
   padding-bottom: 8px;
+}
+
+.table {
+  width: 100%;
+}
+
+.thead {
+  background-color: deepskyblue;
+}
+
+.tbody {
+  background-color: rgb(208, 225, 247);
 }
 </style>

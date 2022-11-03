@@ -29,6 +29,7 @@ export default {
   border: 1px solid #39495c;
   margin-bottom: 18px;
   background-color: lightcyan;
+  border: 6px burlywood dotted;
 }
 
 .patient-card:hover {
