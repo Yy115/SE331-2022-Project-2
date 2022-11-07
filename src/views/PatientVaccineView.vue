@@ -134,7 +134,6 @@ export default {
       PatientService.addDoctor(this.GStore.patient.id, this.doctorid).then(
         (response) => {
           console.log(response)
-          this.$router.go(0)
         }
       )
     },
@@ -177,7 +176,6 @@ export default {
       console.log(this.patient1)
       PatientService.addvaccine(this.patient1).then((response) => {
         console.log(response)
-        this.$router.go(0)
       })
     }
   },

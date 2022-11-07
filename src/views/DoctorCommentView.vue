@@ -50,7 +50,7 @@ export default {
       ).then((response) => {
         console.log(response)
         // this.$router.push({ name: 'Layout', params: { id: this.patient.id } })
-        this.$router.go(0)
+        this.$router.push({ name: 'PatientDetail', params: { id: this.GStore.patient.id } })
       })
       this.GStore.flashMessage = 'Your comment has been added'
       setTimeout(() => {

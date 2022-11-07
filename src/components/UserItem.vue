@@ -51,7 +51,7 @@ export default {
       console.log(this.user.id, this.num)
       UserService.updaterole(this.user.id, this.num).then((response) => {
         this.users = response.data
-        this.$router.go(0)
+        this.$router.push({ name: 'Home' })
       })
     }
   }
