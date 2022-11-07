@@ -1,6 +1,6 @@
 version: "3.9"
 services:
   web:
-    image: "13819773795/331-project-frontend:latest"
+    image: "18183900271/331-project-frontend:latest"
     ports:
       - 4000:80
