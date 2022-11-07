@@ -134,6 +134,7 @@ export default {
       PatientService.addDoctor(this.GStore.patient.id, this.doctorid).then(
         (response) => {
           console.log(response)
+          this.$router.push({ name: 'PatientDetail', params: { id: this.GStore.patient.id } })
         }
       )
     },
